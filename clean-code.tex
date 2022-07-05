@@ -108,7 +108,7 @@ grade you, and it's how open source works
 
 # Tests matter
 
-In fact, it's a topic in itself. I hope we'll get to talk about it one day
+In fact, it's a topic in itself - spoiler for later :)
 
 #
 
@@ -363,11 +363,6 @@ Functions should be really short.
 
 # Code smell (1)
 
-A function that *takes* a boolean argument can probably be
-replaced by two functions instead
-
-# Code smell (2)
-
 A function that looks like this ...
 
 ```python
@@ -384,7 +379,11 @@ def my_big_function():
 
 ... can probably be split in 3 (the comments are the clue)
 
-#
+## Code smell (2)  Number of arguments
+
+* 0 to 3 : probably fine
+* more than 3 : danger -> consider introducing
+  a class for the parameters
 
 \huge \center Clean code and Craft
 
@@ -422,7 +421,7 @@ So you want *short* feedback loops.
 * Le refactoring
 * Les tests
 
-Comment garntir la qualité du code, le fait qu'il soit testé *et* la qualité des tests?
+Comment garantir la qualité du code, le fait qu'il soit testé *et* la qualité des tests?
 
 # TDD
 
@@ -438,15 +437,15 @@ A cycle
 
 * Red: clarifying intents and specifications
 * Green: implementing the feature
-* Refactor: you knon tests will catch most of the mistakes
+* Refactor: you know tests will catch most of the mistakes
 
-# TDDD - 3 phases
+## TDD - 3 phases
 
 * Red: focus on specs
 * Green: focus on implementation, algorithms, data structures and so on
 * Refactor: focus on quality
 
-# TDDD - Short cycles
+## TDD - Short cycles
 
  * Get feedback fast
  * Find bugs early
@@ -900,3 +899,84 @@ Smells:
 * Primitive Obsession
 * Behavior Drive Development
 * Domain Driven Design
+# Tools for clean code
+
+## On tools
+
+Use the same tools as your team, or be ready to face
+problems you're the only one having :)
+
+## IDEs
+
+IDEs can help
+
+* Code navigation
+* Code completion (useful for long_names ;)
+* Refactoring tools
+* ... and more
+
+## Linters
+
+Code that will read your code and tell you about problems
+
+For instance:
+
+```python
+if is_full_moon():
+    mesage = "Attention aux loug-garous"
+else:
+    message = "Promenons-nous dans les bois"
+print(message)
+```
+
+## Linter (2)
+
+```
+moon.py:7:9: F841 local variable 'mesage' is assigned to but never used
+```
+
+Should have waiting for a full moon to see the bug otherwise!
+
+## Formatter
+
+Demo!
+
+## Formatters
+
+* The less configuration the better
+* black for Python, gofmt for Golang
+* Use IDE for C# Java
+...
+
+## Code manifesto
+
+You'll often have debates about clean code during code review
+
+My advice : take a decision and write it into a "code manifesto"
+
+The actual *contents* does not matter much
+
+# Example (1)
+
+I use do write:
+
+```
+x = list()
+y = dict()
+```
+
+Now I write
+
+```
+x = []
+y= {}
+```
+
+# Example
+
+Both are *fine*, actually. What matter is to not mix the two!
+
+Beware of 'post-hoc' arguments ;)
+
+Debates is usually not productive, so try to limit its impact
+on productivity
