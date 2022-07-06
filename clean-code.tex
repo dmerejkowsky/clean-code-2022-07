@@ -383,7 +383,66 @@ def my_big_function():
 
 * 0 to 3 : probably fine
 * more than 3 : danger -> consider introducing
-  a class for the parameters
+
+
+ # More or less lignes?
+
+\center \large It depends!
+
+# More lignes is better
+
+```python
+if (
+    age >= 18
+    and nationalité == "française"
+    and nom in liste_éléctorales(circonscription)
+):
+    print("peut voter")
+```
+
+# More lignes is better
+
+```python
+majeur = age >= 18
+français = nationalité == "française"
+inscrit = nom in liste_éléctorales(circonscription)
+
+if majeur and français and inscrit:
+    print("peu voter")
+```
+
+# Less lignes is better
+
+```python
+if can_vote:
+    return True
+else:
+    return False
+```
+
+vs
+
+```python
+return can_vote
+```
+
+# Early return pattern
+
+```python
+def can_access_confidential_document():
+    if not logged_in:
+        return False
+    if intern:
+        return False
+    if extern:
+        return False
+    if security_level <= 3:
+        return False
+
+    return True
+```
+
+# a class for the parameters
 
 \huge \center Clean code and Craft
 
