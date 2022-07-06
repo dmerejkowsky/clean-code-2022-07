@@ -1,6 +1,7 @@
 ---
 title: Clean code
-author: Dimitri Merejkowsky
+author: Dimitri Merejkowsky & Karim Boutouil
+date: 11 - 12 juillet 2022
 ---
 
 #
@@ -47,7 +48,7 @@ The natural tendency of any code base is for the code quality to *degrade*.
 
 Maintaining code quality is always a challenge.
 
-(Known as "the flappy bird problem)
+(Known as "the flappy bird problem")
 
 #
 
@@ -103,8 +104,9 @@ You'll write really bad code when you're sleep deprived, and you'll be
 
 # Code review works
 
-Go ask other people to read and comment your code. It's what I do when I
-grade you, and it's how open source works
+Go ask other people to read and comment your code!
+
+After all, it's how open source works :)
 
 # Tests matter
 
@@ -177,7 +179,7 @@ This is sometimes called *rotten* comments.
 Do not put useless comments (2)
 
 ```python
-# Adds to to x
+# Adds 2 to to x
 # x : the number to add 2 to.
 # Returns the result of adding 2 to x
 def add_two(x):
@@ -186,7 +188,7 @@ def add_two(x):
 
 \vfill
 
-We can know all this by looking at the code!
+We can know all this by looking at the *name of the function*!
 
 # Comments (3)
 
@@ -379,15 +381,30 @@ def my_big_function():
 
 ... can probably be split in 3 (the comments are the clue)
 
-## Code smell (2)  Number of arguments
+# Code smell (2)  Number of arguments
 
 * 0 to 3 : probably fine
-* more than 3 : danger -> consider introducing
+* more than 3 : danger -> consider introducing a struct or class for storing the parameters
 
 
- # More or less lignes?
+# More or less lignes?
 
 \center \large It depends!
+
+# Less lignes is better
+
+```python
+if can_vote:
+    return True
+else:
+    return False
+```
+
+vs
+
+```python
+return can_vote
+```
 
 # More lignes is better
 
@@ -411,20 +428,6 @@ if majeur and français and inscrit:
     print("peu voter")
 ```
 
-# Less lignes is better
-
-```python
-if can_vote:
-    return True
-else:
-    return False
-```
-
-vs
-
-```python
-return can_vote
-```
 
 # Early return pattern
 
@@ -442,7 +445,7 @@ def can_access_confidential_document():
     return True
 ```
 
-# a class for the parameters
+#
 
 \huge \center Clean code and Craft
 
@@ -498,13 +501,13 @@ A cycle
 * Green: implementing the feature
 * Refactor: you know tests will catch most of the mistakes
 
-## TDD - 3 phases
+# TDD - 3 phases
 
 * Red: focus on specs
 * Green: focus on implementation, algorithms, data structures and so on
 * Refactor: focus on quality
 
-## TDD - Short cycles
+# TDD - Short cycles
 
  * Get feedback fast
  * Find bugs early
@@ -533,7 +536,7 @@ Classes, composition and inheritance are powerful but *dangerous* tools.
 Lots of powerful and dangerous features:
 
 * Multiple inheritance (for languages that have them)
-* Some attribute may be shared
+* Some attribute may be shared (ditto)
 
 #  My advice
 
@@ -958,23 +961,26 @@ Smells:
 * Primitive Obsession
 * Behavior Drive Development
 * Domain Driven Design
-# Tools for clean code
 
-## On tools
+#
+
+\huge \center Tools for clean code
+
+# On tools
 
 Use the same tools as your team, or be ready to face
 problems you're the only one having :)
 
-## IDEs
+# IDEs
 
 IDEs can help
 
 * Code navigation
-* Code completion (useful for long_names ;)
+* Code completion (useful for long, descriptive names ;)
 * Refactoring tools
 * ... and more
 
-## Linters
+# Linters
 
 Code that will read your code and tell you about problems
 
@@ -988,7 +994,7 @@ else:
 print(message)
 ```
 
-## Linter (2)
+# Linters
 
 ```
 moon.py:7:9: F841 local variable 'mesage' is assigned to but never used
@@ -996,18 +1002,26 @@ moon.py:7:9: F841 local variable 'mesage' is assigned to but never used
 
 Should have waiting for a full moon to see the bug otherwise!
 
-## Formatter
+# Choosing a linter
+
+You want to have very few false positive really low, otherwise people will start to ignore them
+
+You'll need CI to make sure the errors caught by the linters are fixed and don't come back
+
+Don't use pylance
+
+# Formatter
 
 Demo!
 
-## Formatters
+# Formatters
 
 * The less configuration the better
 * black for Python, gofmt for Golang
-* Use IDE for C# Java
+* Use IDE for C#, Java
 ...
 
-## Code manifesto
+# Code manifesto
 
 You'll often have debates about clean code during code review
 
@@ -1015,7 +1029,7 @@ My advice : take a decision and write it into a "code manifesto"
 
 The actual *contents* does not matter much
 
-# Example (1)
+# Example
 
 I use do write:
 
@@ -1037,5 +1051,5 @@ Both are *fine*, actually. What matter is to not mix the two!
 
 Beware of 'post-hoc' arguments ;)
 
-Debates is usually not productive, so try to limit its impact
+Debates about this are usually not productive, so try to limit their impact
 on productivity
